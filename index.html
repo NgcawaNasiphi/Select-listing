@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>City Time Alert</title>
+  </head>
+  <body>
+    <h1>Select a City</h1>
+    <select id="citySelect" onchange="showCityTime()">
+      <option value="" disabled selected>Select a city</option>
+      <option value="Europe/Paris">Paris 🇫🇷</option>
+      <option value="Asia/Tokyo">Tokyo 🇯🇵</option>
+      <option value="Australia/Sydney">Sydney 🇦🇺</option>
+    </select>
+
+    <script>
+      function showCityTime() {
+        const cityTimezone = document.getElementById("citySelect").value;
+        if (cityTimezone) {
+          const currentDate = new Date().toLocaleString("en-US", {
+            timeZone: cityTimezone,
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          });
+          alert(`It is ${currentDate} in ${cityTimezone.replace("_", " ")}`);
+        }
+      }
+    </script>
+  </body>
+  <footer>Coded by Nasiphi Ngcawa</footer>
+</html>
